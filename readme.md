@@ -1,3 +1,3 @@
-#Skeleton App
+# Problem 4 Solution
 
-This is a very basic skeleton express app you can use to build from on labs and projects.
+This is the code we worked on in class as a solution to lab 4.
