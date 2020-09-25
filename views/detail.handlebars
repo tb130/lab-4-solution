@@ -1,0 +1,10 @@
+<h1>Details</h1>
+<p>
+    I'll sell you this {{card.name}} card for 
+    
+    {{#if onSale}}
+        ${{card.promoPrice}}
+    {{else}}
+        ${{card.price}}
+    {{/if}}
+</p>

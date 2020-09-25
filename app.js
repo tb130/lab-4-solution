@@ -1,5 +1,22 @@
 const express = require('express');
 
+let myCards = [
+	{
+		id: 4,
+		name: "Alex Rodriguez",
+		rookie: "2006",
+		price: 10,
+		promoPrice: 5
+	},
+	{
+		id: 7,
+		name: "Aaron Judge",
+		rookie: "2017",
+		price: 4,
+		promoPrice: 2
+	}
+];
+
 let app = express();
 
 // set up handlebars view engine
@@ -12,9 +29,28 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/public'));
 
-
+// Home endpoint
 app.get('/', function(req, res) {
-	res.render('home');
+	res.render('home', {
+		cards: myCards,
+		numCards: myCards.length,
+		onSale: req.query.code === 'cardfan'
+	});
+});
+
+// Detail endpoint
+app.get('/detail/:id', function(req, res) {
+	
+	// Go get the card from the data store
+	const thisCard = myCards.find( card => {
+		return card.id.toString() === req.params.id;
+	});
+
+	// Render the card info
+	res.render('detail', {
+		card: thisCard,
+		onSale: req.query.code === 'cardfan'
+	});
 });
 
 // 404 catch-all handler (middleware)

@@ -1,1 +1,14 @@
-<h1>Welcome to My Website</h1>
+<h1>Cards for Sale</h1>
+
+I have {{numCards}} for sale
+
+{{#each cards}}
+    <p>
+        <a href="/detail/{{id}}">{{name}}</a> -
+        {{#if ../onSale}}
+            ${{promoPrice}}
+        {{else}}
+            ${{price}}
+        {{/if}}
+    </p>
+{{/each}}
